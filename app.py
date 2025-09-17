@@ -20,7 +20,7 @@ csv_path = "airockfalldata.csv"
 data = load_data(csv_path)
 
 # Show columns for debugging
-st.write("✅ Columns detected:", list(data.columns))
+# st.write("✅ Columns detected:", list(data.columns))
 
 # Get correct column names dynamically
 location_col = [c for c in data.columns if "location" in c][0]
