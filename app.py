@@ -17,7 +17,9 @@ def load_data(csv_file):
     return pd.read_csv(csv_file)
 
 # Load data
-csv_path = '../airockfalldata.csv'
+import os
+
+csv_path = os.path.join(os.path.dirname(__file__), 'airockfalldata.csv')
 data = load_data(csv_path)
 
 st.set_page_config(page_title="Environmental Data Dashboard", layout="wide")
