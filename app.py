@@ -4,6 +4,26 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 
+# Inject CSS to make the app full width and reduce margins
+st.markdown(
+    """
+    <style>
+    .css-18e3th9 {
+        padding-top: 0rem;
+        padding-bottom: 0rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        max-width: 100vw;
+    }
+    .css-1d391kg {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Load CSV safely
 @st.cache_data
 def load_data(csv_file):
