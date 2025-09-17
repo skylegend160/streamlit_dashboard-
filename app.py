@@ -29,7 +29,7 @@ except ImportError:
 
 @st.cache_data
 def load_data_from_gdrive(url):
-    csv_file = st.experimental_get_query_params().get("csv_url", [url])[0]
+    csv_file = st.query_params.get("csv_url", [url])[0]
     return pd.read_csv(csv_file)
 
 # Load data from Google Drive link (publicly shared CSV)
