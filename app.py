@@ -12,15 +12,29 @@ try:
 except ImportError:
     JS_AVAILABLE = False
 
-@st.cache_data
-def load_data(csv_file):
-    return pd.read_csv(csv_file)
-
-# Load data
+import streamlit as st
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objects as go
+import matplotlib.pyplot as plt
 import os
 
-csv_path = os.path.join(os.path.dirname(__file__), 'airockfalldata.csv')
-data = load_data(csv_path)
+try:
+    from streamlit_javascript import st_javascript
+    from geopy.distance import geodesic
+    JS_AVAILABLE = True
+except ImportError:
+    JS_AVAILABLE = False
+
+@st.cache_data
+def load_data_from_gdrive(url):
+    csv_file = st.experimental_get_query_params().get("csv_url", [url])[0]
+    return pd.read_csv(csv_file)
+
+# Load data from Google Drive link (publicly shared CSV)
+gdrive_csv_url = "https://drive.google.com/uc?export=download&id=1_0xS8VgqX1Sjzl6MSdYkAeewtcKAncrk"
+data = load_data_from_gdrive(gdrive_csv_url)
 
 st.set_page_config(page_title="Environmental Data Dashboard", layout="wide")
 st.title("🌍 Advanced Environmental Data Dashboard")
