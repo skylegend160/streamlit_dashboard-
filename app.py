@@ -102,4 +102,6 @@ with tab3:
 
 with tab4:
     st.subheader("Raw Data")
+    if 'detected' in filtered_data.columns:
+        filtered_data = filtered_data.drop(columns=['detected'])
     st.dataframe(filtered_data, height=400)
